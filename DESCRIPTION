@@ -1,0 +1,14 @@
+Package: DASShapefiles
+Type: Package
+Title: Loads shapefiles to create maps of the North and Baltic Sea
+Version: 0.1.0
+Author: Miriam Lerma
+Maintainer: Miriam Lerma <lerma@dda-web.de>
+Description: Compiles and helps you plot the North and Baltic Sea.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
