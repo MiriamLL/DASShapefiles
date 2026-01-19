@@ -51,10 +51,11 @@ library(ggspatial)
 
 ## 2.1. Europe
 
-```{r, fig.width=10}
+```{r,fig.height=4}
 ggplot2::ggplot()+ ggplot2::geom_sf(data = Europe_land, colour = 'black', fill = '#ffffbe')+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
+  ggplot2::theme_bw()
 ```
 
 ## 2.2. DE_land
@@ -62,10 +63,11 @@ ggplot2::ggplot()+ ggplot2::geom_sf(data = Europe_land, colour = 'black', fill =
 To download go to: [DIVA-GIS](https://www.diva-gis.org/datadown)<br> 
 Select the country and Administrative areas. 
 
-```{r fig.width=10}
+```{r,fig.height=4}
 ggplot2::ggplot()+ ggplot2::geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
+  ggplot2::theme_bw()+
   ggplot2::theme_bw()
 ```
 
@@ -76,7 +78,7 @@ To download: go to [EMODnet](https://www.emodnet-humanactivities.eu/view-data.ph
 Select Other Forms of Area Management/Designation>Click on the download icon on [Exclusive Economic Zone](https://www.emodnet-humanactivities.eu/search-results.php?dataname=Exclusive+Economic+Zone).
 Select Download Data, Select the country, and the Sector, and the Link should be ready to download.
 
-```{r, fig.width=10}
+```{r,fig.height=4}
 ggplot2::ggplot()+ ggplot2::geom_sf(data = DE_EEZ,
                                     colour = "red", fill= NA,alpha=0.9, lwd = 1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -87,16 +89,16 @@ ggplot2::ggplot()+ ggplot2::geom_sf(data = DE_EEZ,
 
 ## 2.4. DE_coast
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_coast, 
                    colour = "red", fill= '#bde0fe',alpha=0.9, lwd = 1,linetype="dashed")+
   ggplot2::theme_bw()
 ```
 
-## 2.5. EEZ North
+## 2.5. DE_North
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_North, 
                                     colour = "black", fill= '#bde0fe',alpha=0.9, lwd = 0.5)+
@@ -107,7 +109,7 @@ ggplot2::ggplot()+
 
 ## 2.6. DE Baltic 
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_Baltic, 
                                     colour = "black", fill= '#bde0fe',alpha=0.9, lwd = 0.5)+
@@ -123,7 +125,7 @@ The zip contains several shapefiles including **NatureConservation**
 
 Other option is [eea](https://www.eea.europa.eu/data-and-maps/data/natura-13)
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_natura, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
   ggplot2::theme_bw()
@@ -136,7 +138,7 @@ This file contains a more complete data from the natura 2000 sites.
 
 For using the SCA (Special Conservation Areas) in Germany
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_SCA, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -146,7 +148,7 @@ ggplot2::ggplot()+
 
 ### 3.3. SPA and SCA
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_natura, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
   ggplot2::geom_sf(data = DE_SCA, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
@@ -162,7 +164,7 @@ ggplot2::ggplot()+
 To download: go to [GeoSeaPortal](https://www.geoseaportal.de/atomfeeds/Raumordnungsplan_AWZ_en.xml#download=1.)
 The zip contains several shapefiles including **'OffshoreWindEnergy'**
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_OWF, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -170,13 +172,13 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-### 4.1.2. EMODnet
+### 4.1.2. DE_OWF_status
 
 To download: Go to [EMBO](https://www.emodnet-humanactivities.eu/view-data.php). Select [human activities](https://www.emodnet-humanactivities.eu/search-results.php?dataname=Wind+Farms+%28Polygons%29)
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
-  ggplot2::geom_sf(data = OWF_EMODnet, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
+  ggplot2::geom_sf(data = DE_OWF_status, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
   ggplot2::theme_bw()
@@ -184,8 +186,8 @@ ggplot2::ggplot()+
 
 ### 4.1.3. Map with annotations
 
-```{r}
-ggplot(OWF_EMODnet)+ 
+```{r,fig.height=4}
+ggplot(DE_OWF_status)+ 
   geom_sf(data = DE_EEZ,colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DE_coast,colour = "red", fill= '#bde0fe',alpha=0.9, lwd = 0.5,linetype="dashed")+
   geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
@@ -193,8 +195,9 @@ ggplot(OWF_EMODnet)+
   geom_sf(data = OWF_EMODnet, aes(fill= STATUS), colour = "grey",alpha=0.9, size=0.5)+
   scale_fill_manual(values = c("yellow", "blue", "green"))+
   coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
-  theme(legend.position = 'bottom')
+                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+  ggplot2::theme_bw()+
+  theme(legend.position = 'bottom')+
 ```
 
 
@@ -203,11 +206,7 @@ ggplot(OWF_EMODnet)+
 To download: go to [GeoSeaPortal](https://www.geoseaportal.de/atomfeeds/Raumordnungsplan_AWZ_en.xml#download=1.)
 The zip contains several shapefiles including **Shipping**
 
-```{r}
-DE_shipping<-DASShapefiles::DE_shipping
-```
-
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_shipping, colour = "blue", fill= 'blue',alpha=0.2, lwd = 1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -217,7 +216,7 @@ ggplot2::ggplot()+
 
 ### 4.2.1. Map with annotations
 
-```{r}
+```{r,fig.height=4}
 ggplot(DE_shipping)+ 
   geom_sf(data = DE_EEZ,colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DE_coast,colour = "red", fill= '#bde0fe',alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -264,7 +263,7 @@ Bath_dataframe_sub <-Bath_dataframe  %>%
 DE_land<-st_transform(DE_land, 4326)
 ```
 
-```{r}
+```{r,fig.height=4}
 library(ggplot2)
 ggplot() +
   geom_raster(data = Bath_dataframe_sub , aes(x = x, y = y, fill = Bathymetry)) +
@@ -287,25 +286,8 @@ I recommend to download **the interpolated 0.01-degree GeoTiff packed together w
 For steps to manipulate the data check my [blogpost](https://www.miriam-lerma.com/posts/2025-02-15-distancetocoast/)
 
 ```{r}
-DistCoast_dataframe<-DASShapefiles::DE_distancecoast
-```
-
-```{r}
-library(sf)
-```
-
-```{r}
-DE_land<-st_transform(DASShapefiles::DE_land, 4326)
-```
-
-```{r}
-DistCoast_dataframe_sub<-DistCoast_dataframe %>%
-  filter(Dist > -20)
-```
-
-```{r}
 ggplot() +
-  geom_raster(data = DistCoast_dataframe_sub, aes(x = x, y = y, fill = Dist)) +
+  geom_raster(data = DE_distancecoast, aes(x = x, y = y, fill = Dist)) +
   geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
   scale_fill_viridis_c(option = "rocket")+
   theme_void()+
@@ -327,29 +309,29 @@ Source: [BfN](https://nokis.mdi-de-dienste.org/trefferanzeige?docuuid=57fbad61-2
 
 Reference: Dieser Dienst und die darin verfügbaren Daten können gemäß der 'Nutzungsbestimmungen für die Bereitstellung von Geodaten des Bundes' (http://www.gesetze-im-internet.de/bundesrecht/geonutzv/gesamt.pdf) genutzt werden. Quelle: Bundesamt für Naturschutz (BfN) Jahr.
 
-
-```{r, eval=TRUE}
-DE_areas<-DASShapefiles::DE_areas
+```{r}
+DE_land<-st_transform(DASShapefiles::DE_land, 4326)
 ```
 
-```{r, eval=TRUE}
-library(ggplot2)
-DE_land<-st_transform(DASShapefiles::DE_land, 4326)
-DE_EEZ<-st_transform(DASShapefiles::DE_EEZ, 4326)
-DE_coast<-st_transform(DASShapefiles::DE_coast, 4326)
+```{r, eval=FALSE}
 ggplot() +  
-   geom_sf(data = DE_EEZ, colour = "black", fill= '#caf0f8', lwd = 0.5)+
-  
+  geom_sf(data = DE_EEZ, colour = "black", fill= '#caf0f8', lwd = 0.5)+
   geom_sf(data = DE_areas, color='black',fill = '#caf0f8', lwd = 0.5)+
-  
   geom_sf(data = DE_areas, aes(fill=stratum),colour = 'transparent')+
-  scale_fill_manual(values = c(A = '#7400b8',B = '#6930c3',C = '#5e60ce',D = '#277da1',E = '#577590',F = '#4d908e',
-                               G = '#43aa8b',H = '#90be6d',I = '#f9c74f',J = '#ff6d00',K = '#f8961e',L = '#f3722c',
+  scale_fill_manual(values = c(A = '#7400b8',
+                               B = '#6930c3',
+                               C = '#5e60ce',
+                               D = '#277da1',
+                               E = '#577590',
+                               F = '#4d908e',
+                               G = '#43aa8b',
+                               H = '#90be6d',
+                               I = '#f9c74f',
+                               J = '#ff6d00',
+                               K = '#f8961e',
+                               L = '#f3722c',
                                N = '#f94144'))+
   
-  # Fill colors
- 
- 
   # Line colors
   geom_sf(data = DE_EEZ, colour = "black", fill= NA, lwd = 0.5)+
   geom_sf(data = DE_coast, colour = "black", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -400,11 +382,7 @@ ggplot() +
 Source: [ICES rectangles](https://gis.ices.dk/sf/index.html)<br> 
 To download: go to link> click on **Quick Downloads**> select ICES Statistical Rectangles.
 
-```{r}
-DE_ICES<-DASShapefiles::DE_ICES
-```
-
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot(DE_ICES)+ 
   ggplot2::geom_sf(data = DE_ICES, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
   ggplot2::geom_sf_text(ggplot2::aes(label =ICESNAME),size=3,family="sans")+
@@ -416,16 +394,9 @@ ggplot2::ggplot(DE_ICES)+
 
 This grids were created in R and are made available by this package.
 
-To cite: Lerma, M (2023) German North Sea package. 
-
-```{r}
-library(ggplot2)
-library(ggspatial)
-```
-
 ### 6.3.1. Grid 5x5
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   geom_sf(data = DASShapefiles::DE_EEZ, colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DASShapefiles::DE_coast, colour = "red", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -471,7 +442,7 @@ ggplot()+
 grid10x10_3035<-my_grid_sf
 ```
 
-```{r}
+```{r,fig.height=4}
 ggplot() +
   geom_sf(data = DASShapefiles::DE_EEZ, colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DASShapefiles::DE_coast, colour = "red", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -516,7 +487,7 @@ save(grid10x10_EEZ, file = "grid10x10_EEZ.RData", version = 2)
 ##devtools::check()
 ```
 
-```{r}
+```{r,fig.height=4}
 ggplot2::ggplot()+ 
   geom_sf(data = DASShapefiles::DE_EEZ, colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DASShapefiles::DE_coast, colour = "red", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -529,10 +500,9 @@ ggplot2::ggplot()+
 
 # 7. Different CRS
 
-
 ## 7.1. CRS 3050
 
-```{r}
+```{r,fig.height=4}
 ggplot() +
   geom_sf(data = DASShapefiles::DE_EEZ, colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DASShapefiles::DE_coast, colour = "red", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -571,18 +541,13 @@ library(sf)
 ```
 
 ```{r}
-library(DASShapefiles)
-library(ggspatial)
-```
-
-```{r}
 DE_EEZ<-st_transform(DE_EEZ, 4326)
 DE_coast<-st_transform(DE_coast, 4326)
 DE_land<-st_transform(DE_land, 4326)
 DE_natura<-st_transform(DE_natura, 4326)
 ```
 
-```{r, fig.height=8, fig.width=8}
+```{r,fig.height=4}
 ggplot()+
   geom_sf(data = DE_EEZ, colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DE_coast, colour = "red", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+

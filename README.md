@@ -32,21 +32,8 @@ Other useful packages
 
 ``` r
 library(tidyverse)
-#> Warning: package 'ggplot2' was built under R version 4.4.3
-#> ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-#> ✔ dplyr     1.1.4     ✔ readr     2.1.5
-#> ✔ forcats   1.0.0     ✔ stringr   1.5.1
-#> ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-#> ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-#> ✔ purrr     1.0.2     
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter() masks stats::filter()
-#> ✖ dplyr::lag()    masks stats::lag()
-#> ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 library(ggplot2)
 library(sf)
-#> Warning: package 'sf' was built under R version 4.4.3
-#> Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1; sf_use_s2() is TRUE
 library(ggplot2)
 library(ggspatial)
 ```
@@ -56,35 +43,30 @@ library(ggspatial)
 ## 2.1. Europe
 
 ``` r
-Europe_land<-DASShapefiles::Europe_land
-```
-
-``` r
 ggplot2::ggplot()+ ggplot2::geom_sf(data = Europe_land, colour = 'black', fill = '#ffffbe')+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-## 2.2. Germany
+## 2.2. DE_land
 
 To download go to: [DIVA-GIS](https://www.diva-gis.org/datadown)<br>
 Select the country and Administrative areas.
 
 ``` r
-DE_land<-DASShapefiles::DE_land
-```
-
-``` r
 ggplot2::ggplot()+ ggplot2::geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
+  ggplot2::theme_bw()+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
-## 2.3. German EEZ
+## 2.3. DE_EEZ
 
 To download: go to
 [EMODnet](https://www.emodnet-humanactivities.eu/view-data.php)\>Select
@@ -96,63 +78,49 @@ Select Download Data, Select the country, and the Sector, and the Link
 should be ready to download.
 
 ``` r
-DE_EEZ<-DASShapefiles::DE_EEZ
-```
-
-``` r
 ggplot2::ggplot()+ ggplot2::geom_sf(data = DE_EEZ,
                                     colour = "red", fill= NA,alpha=0.9, lwd = 1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-## 2.4. German EEZ coast
-
-``` r
-DE_coast<-DASShapefiles::DE_coast
-```
+## 2.4. DE_coast
 
 ``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_coast, 
-                                    colour = "red", fill= '#bde0fe',alpha=0.9, lwd = 1,linetype="dashed")+
-  ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+                   colour = "red", fill= '#bde0fe',alpha=0.9, lwd = 1,linetype="dashed")+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 ## 2.5. EEZ North
-
-``` r
-DE_North<-DASShapefiles::DE_North
-```
 
 ``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_North, 
                                     colour = "black", fill= '#bde0fe',alpha=0.9, lwd = 0.5)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
+                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 ## 2.6. DE Baltic
 
 ``` r
-DE_Baltic<-DASShapefiles::DE_Baltic
-```
-
-``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_Baltic, 
-                                    colour = "black", fill= '#bde0fe',alpha=0.9, lwd = 0.5)
+                                    colour = "black", fill= '#bde0fe',alpha=0.9, lwd = 0.5)+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
 # 3. Protected areas
 
@@ -166,18 +134,12 @@ Other option is
 [eea](https://www.eea.europa.eu/data-and-maps/data/natura-13)
 
 ``` r
-DE_natura<-DASShapefiles::DE_natura
-```
-
-``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_natura, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
-  ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
 
 ### 3.2. Special Conservation Areas
 
@@ -188,10 +150,6 @@ file contains a more complete data from the natura 2000 sites.
 For using the SCA (Special Conservation Areas) in Germany
 
 ``` r
-DE_SCA<-DASShapefiles::DE_SCA
-```
-
-``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_SCA, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -199,7 +157,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
 
 ### 3.3. SPA and SCA
 
@@ -207,55 +165,10 @@ ggplot2::ggplot()+
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_natura, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
   ggplot2::geom_sf(data = DE_SCA, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 1)+
-  ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
-
-## 3.4 Map with annotations
-
-``` r
-DE_natura$Abbreviations<-c('SOR','BR','DB')
-```
-
-``` r
-ggplot(DE_natura) +
-  geom_sf(data = DE_EEZ, colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
-  geom_sf(data = DE_coast, colour = "red", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
-  geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
-  geom_sf(data = DE_natura, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 0.5)+
-  geom_sf_text(aes(label=Abbreviations),size=3,family="sans")+
-  
-  annotation_north_arrow(location ="bl", which_north = "true", 
-        pad_x = unit(0.05, "in"), 
-        pad_y = unit(0.05, "in"),
-        
-        style = north_arrow_fancy_orienteering)+
-  
-  theme(
-  legend.spacing.y = unit(0.05, 'cm'),
-  legend.text=element_text(size=10),
-  legend.background = element_rect(fill='transparent',colour ="transparent"),
-  legend.box.background = element_rect(fill='transparent',colour ="transparent"),
-  legend.key = element_rect(fill = "transparent", colour = "transparent"),
-  panel.background = element_rect(fill = '#bde0fe'))+
-  
-  xlab('Longitude')+ylab('Latitude')+
-  
-  theme(panel.border = element_rect(colour = "black", fill=NA, size=1.5))+
-  
-  coord_sf(xlim = c(3900000,4250000), ylim = c(3350000,3680000),
-                    label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
-#> Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
-#> ℹ Please use the `linewidth` argument instead.
-#> This warning is displayed once every 8 hours.
-#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-#> generated.
-```
-
-<img src="man/figures/README-unnamed-chunk-22-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
 # 4. Human activities
 
@@ -268,10 +181,6 @@ To download: go to
 The zip contains several shapefiles including **‘OffshoreWindEnergy’**
 
 ``` r
-DE_OWF<-DASShapefiles::DE_OWF
-```
-
-``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_OWF, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -279,7 +188,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-24-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
 ### 4.1.2. EMODnet
 
@@ -289,10 +198,6 @@ To download: Go to
 activities](https://www.emodnet-humanactivities.eu/search-results.php?dataname=Wind+Farms+%28Polygons%29)
 
 ``` r
-OWF_EMODnet<-DASShapefiles::OWF_EMODnet
-```
-
-``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = OWF_EMODnet, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -300,7 +205,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-26-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
 
 ### 4.1.3. Map with annotations
 
@@ -314,10 +219,11 @@ ggplot(OWF_EMODnet)+
   scale_fill_manual(values = c("yellow", "blue", "green"))+
   coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
-  theme(legend.position = 'bottom')
+  theme(legend.position = 'bottom')+
+  ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-27-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
 
 ## 4.2. Shipping lines
 
@@ -337,7 +243,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-29-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
 
 ### 4.2.1. Map with annotations
 
@@ -355,7 +261,7 @@ ggplot(DE_shipping)+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-18-1.png" width="100%" />
 
 # 5. Environmental variables
 
@@ -406,7 +312,7 @@ ggplot() +
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-34-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-22-1.png" width="100%" />
 
 Reference: If the data sets are used in a presentation or publication
 then we ask that you acknowledge the source.This should be of the form:
@@ -423,25 +329,8 @@ data check my
 [blogpost](https://www.miriam-lerma.com/posts/2025-02-15-distancetocoast/)
 
 ``` r
-DistCoast_dataframe<-DASShapefiles::DE_distancecoast
-```
-
-``` r
-library(sf)
-```
-
-``` r
-DE_land<-st_transform(DASShapefiles::DE_land, 4326)
-```
-
-``` r
-DistCoast_dataframe_sub<-DistCoast_dataframe %>%
-  filter(Dist > -20)
-```
-
-``` r
 ggplot() +
-  geom_raster(data = DistCoast_dataframe_sub, aes(x = x, y = y, fill = Dist)) +
+  geom_raster(data = DE_distancecoast, aes(x = x, y = y, fill = Dist)) +
   geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
   scale_fill_viridis_c(option = "rocket")+
   theme_void()+
@@ -451,7 +340,7 @@ ggplot() +
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-39-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-23-1.png" width="100%" />
 
 # 6. Zonification
 
@@ -471,27 +360,28 @@ Bundes’
 genutzt werden. Quelle: Bundesamt für Naturschutz (BfN) Jahr.
 
 ``` r
-DE_areas<-DASShapefiles::DE_areas
+DE_land<-st_transform(DASShapefiles::DE_land, 4326)
 ```
 
 ``` r
-library(ggplot2)
-DE_land<-st_transform(DASShapefiles::DE_land, 4326)
-DE_EEZ<-st_transform(DASShapefiles::DE_EEZ, 4326)
-DE_coast<-st_transform(DASShapefiles::DE_coast, 4326)
 ggplot() +  
-   geom_sf(data = DE_EEZ, colour = "black", fill= '#caf0f8', lwd = 0.5)+
-  
+  geom_sf(data = DE_EEZ, colour = "black", fill= '#caf0f8', lwd = 0.5)+
   geom_sf(data = DE_areas, color='black',fill = '#caf0f8', lwd = 0.5)+
-  
   geom_sf(data = DE_areas, aes(fill=stratum),colour = 'transparent')+
-  scale_fill_manual(values = c(A = '#7400b8',B = '#6930c3',C = '#5e60ce',D = '#277da1',E = '#577590',F = '#4d908e',
-                               G = '#43aa8b',H = '#90be6d',I = '#f9c74f',J = '#ff6d00',K = '#f8961e',L = '#f3722c',
+  scale_fill_manual(values = c(A = '#7400b8',
+                               B = '#6930c3',
+                               C = '#5e60ce',
+                               D = '#277da1',
+                               E = '#577590',
+                               F = '#4d908e',
+                               G = '#43aa8b',
+                               H = '#90be6d',
+                               I = '#f9c74f',
+                               J = '#ff6d00',
+                               K = '#f8961e',
+                               L = '#f3722c',
                                N = '#f94144'))+
   
-  # Fill colors
- 
- 
   # Line colors
   geom_sf(data = DE_EEZ, colour = "black", fill= NA, lwd = 0.5)+
   geom_sf(data = DE_coast, colour = "black", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
@@ -536,8 +426,6 @@ ggplot() +
   annotate(geom = "text", x = 14.2,y = 54.3, label = "O",size = 4,fontface = 'bold',color='#343a40')
 ```
 
-<img src="man/figures/README-unnamed-chunk-41-1.png" width="100%" />
-
 ## 6.2. ICES Rectangles
 
 Source: [ICES rectangles](https://gis.ices.dk/sf/index.html)<br> To
@@ -556,18 +444,11 @@ ggplot2::ggplot(DE_ICES)+
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-43-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-27-1.png" width="100%" />
 
 ## 6.3. Grids
 
 This grids were created in R and are made available by this package.
-
-To cite: Lerma, M (2023) German North Sea package.
-
-``` r
-library(ggplot2)
-library(ggspatial)
-```
 
 ### 6.3.1. Grid 5x5
 
@@ -582,7 +463,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-45-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
 
 ### 6.3.2. Grid 10x10
 
@@ -599,9 +480,14 @@ ggplot() +
   coord_sf(xlim = c(3900000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
   ggplot2::theme_bw()
+#> Warning: The `size` argument of `element_rect()` is deprecated as of ggplot2 3.4.0.
+#> ℹ Please use the `linewidth` argument instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+#> generated.
 ```
 
-<img src="man/figures/README-unnamed-chunk-47-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
 
 ### 6.3.3. Grid 10x10 Only EEZ
 
@@ -616,7 +502,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-49-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-32-1.png" width="100%" />
 
 # 7. Different CRS
 
@@ -650,7 +536,7 @@ ggplot() +
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-50-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-33-1.png" width="100%" />
 
 ## 7.2. CRS 4326
 
@@ -659,11 +545,6 @@ package **sf**.
 
 ``` r
 library(sf)
-```
-
-``` r
-library(DASShapefiles)
-library(ggspatial)
 ```
 
 ``` r
@@ -702,7 +583,7 @@ ggplot()+
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-54-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-36-1.png" width="100%" />
 
 # 8. Resources
 
