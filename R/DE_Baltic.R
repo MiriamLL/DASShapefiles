@@ -1,10 +1,10 @@
 #' Shapefile
-#' Shapefile from EEZ_Baltic
+#' Shapefile from DE_Baltic
 #' @docType data
-#' @usage data(EEZ_Baltic)
+#' @usage data(DE_Baltic)
 #' @format Shapefile
 #' @keywords datasets
 #' @references To-do
 #' @examples
-#' data(EEZ_Baltic)
-"EEZ_Baltic"
+#' data(DE_Baltic)
+"DE_Baltic"

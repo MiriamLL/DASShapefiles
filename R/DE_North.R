@@ -1,10 +1,10 @@
 #' Shapefile
-#' Shapefile from EEZ_North
+#' Shapefile from DE_North
 #' @docType data
-#' @usage data(EEZ_North)
+#' @usage data(DE_North)
 #' @format Shapefile
 #' @keywords datasets
 #' @references To-do
 #' @examples
-#' data(EEZ_North)
-"EEZ_North"
+#' data(DE_North)
+"DE_North"
