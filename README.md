@@ -98,7 +98,7 @@ ggplot2::ggplot()+
 
 <img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
-## 2.5. EEZ North
+## 2.5. DE_North
 
 ``` r
 ggplot2::ggplot()+ 
@@ -190,7 +190,7 @@ ggplot2::ggplot()+
 
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
-### 4.1.2. EMODnet
+### 4.1.2. DE_OWF_status
 
 To download: Go to
 [EMBO](https://www.emodnet-humanactivities.eu/view-data.php). Select
@@ -199,7 +199,7 @@ activities](https://www.emodnet-humanactivities.eu/search-results.php?dataname=W
 
 ``` r
 ggplot2::ggplot()+ 
-  ggplot2::geom_sf(data = OWF_EMODnet, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
+  ggplot2::geom_sf(data = DE_OWF_status, colour = "#fe0001", fill= '#bde0fe',alpha=0.9, size=1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
   ggplot2::theme_bw()
@@ -210,17 +210,17 @@ ggplot2::ggplot()+
 ### 4.1.3. Map with annotations
 
 ``` r
-ggplot(OWF_EMODnet)+ 
+ggplot(DE_OWF_status)+ 
   geom_sf(data = DE_EEZ,colour = "red", fill= NA,alpha=0.9, lwd = 0.5)+
   geom_sf(data = DE_coast,colour = "red", fill= '#bde0fe',alpha=0.9, lwd = 0.5,linetype="dashed")+
   geom_sf(data = DE_land, colour = 'black', fill = '#ffffbe')+
   geom_sf(data = DE_natura, colour = "#3d6d22", fill= '#3d6d22',alpha=0.2, lwd = 0.5)+
-  geom_sf(data = OWF_EMODnet, aes(fill= STATUS), colour = "grey",alpha=0.9, size=0.5)+
+  geom_sf(data = DE_OWF_status, aes(fill= STATUS), colour = "grey",alpha=0.9, size=0.5)+
   scale_fill_manual(values = c("yellow", "blue", "green"))+
   coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
-  theme(legend.position = 'bottom')+
-  ggplot2::theme_bw()
+  ggplot2::theme_bw()+
+  theme(legend.position = 'bottom')
 ```
 
 <img src="man/figures/README-unnamed-chunk-15-1.png" width="100%" />
@@ -232,10 +232,6 @@ To download: go to
 The zip contains several shapefiles including **Shipping**
 
 ``` r
-DE_shipping<-DASShapefiles::DE_shipping
-```
-
-``` r
 ggplot2::ggplot()+ 
   ggplot2::geom_sf(data = DE_shipping, colour = "blue", fill= 'blue',alpha=0.2, lwd = 1)+
   ggplot2::coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
@@ -243,7 +239,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-16-1.png" width="100%" />
 
 ### 4.2.1. Map with annotations
 
@@ -257,11 +253,11 @@ ggplot(DE_shipping)+
   scale_fill_manual(values = c("blue", "deepskyblue", "turquoise"))+
   coord_sf(xlim = c(3790000,4250000), ylim = c(3350000,3680000),
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))+
-  theme(legend.position = 'bottom')+
-  ggplot2::theme_bw()
+  ggplot2::theme_bw()+
+  theme(legend.position = 'bottom')
 ```
 
-<img src="man/figures/README-unnamed-chunk-18-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-17-1.png" width="100%" />
 
 # 5. Environmental variables
 
@@ -312,7 +308,7 @@ ggplot() +
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-22-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-21-1.png" width="100%" />
 
 Reference: If the data sets are used in a presentation or publication
 then we ask that you acknowledge the source.This should be of the form:
@@ -340,7 +336,7 @@ ggplot() +
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-23-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-22-1.png" width="100%" />
 
 # 6. Zonification
 
@@ -360,7 +356,10 @@ Bundes’
 genutzt werden. Quelle: Bundesamt für Naturschutz (BfN) Jahr.
 
 ``` r
-DE_land<-st_transform(DASShapefiles::DE_land, 4326)
+DE_EEZ<-st_transform(DE_EEZ, 4326)
+DE_coast<-st_transform(DE_coast, 4326)
+DE_land<-st_transform(DE_land, 4326)
+DE_natura<-st_transform(DE_natura, 4326)
 ```
 
 ``` r
@@ -386,7 +385,7 @@ ggplot() +
   geom_sf(data = DE_EEZ, colour = "black", fill= NA, lwd = 0.5)+
   geom_sf(data = DE_coast, colour = "black", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
   geom_sf(data = DE_land, colour = '#d9d9d9', fill = '#d9d9d9')+
-  geom_sf(data = DE_coast, colour = "black", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
+  #geom_sf(data = DE_coast, colour = "black", fill= NA,alpha=0.9, lwd = 0.5,linetype="dashed")+
   
   coord_sf(xlim = c(3, 15),ylim = c(53, 56))+
   scale_x_continuous(breaks = c(5,7,9,11,13,15),labels = function(x) paste0(x, '\u00B0', "W")) +
@@ -426,15 +425,13 @@ ggplot() +
   annotate(geom = "text", x = 14.2,y = 54.3, label = "O",size = 4,fontface = 'bold',color='#343a40')
 ```
 
+<img src="man/figures/README-unnamed-chunk-24-1.png" width="100%" />
+
 ## 6.2. ICES Rectangles
 
 Source: [ICES rectangles](https://gis.ices.dk/sf/index.html)<br> To
 download: go to link\> click on **Quick Downloads**\> select ICES
 Statistical Rectangles.
-
-``` r
-DE_ICES<-DASShapefiles::DE_ICES
-```
 
 ``` r
 ggplot2::ggplot(DE_ICES)+ 
@@ -444,7 +441,7 @@ ggplot2::ggplot(DE_ICES)+
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-27-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-25-1.png" width="100%" />
 
 ## 6.3. Grids
 
@@ -463,7 +460,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-26-1.png" width="100%" />
 
 ### 6.3.2. Grid 10x10
 
@@ -487,7 +484,7 @@ ggplot() +
 #> generated.
 ```
 
-<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-28-1.png" width="100%" />
 
 ### 6.3.3. Grid 10x10 Only EEZ
 
@@ -502,7 +499,7 @@ ggplot2::ggplot()+
   ggplot2::theme_bw()
 ```
 
-<img src="man/figures/README-unnamed-chunk-32-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-30-1.png" width="100%" />
 
 # 7. Different CRS
 
@@ -536,7 +533,7 @@ ggplot() +
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-33-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-31-1.png" width="100%" />
 
 ## 7.2. CRS 4326
 
@@ -583,7 +580,7 @@ ggplot()+
                     label_axes = list(top = "E", left = "N", bottom = 'E', right='N'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-36-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-34-1.png" width="100%" />
 
 # 8. Resources
 
